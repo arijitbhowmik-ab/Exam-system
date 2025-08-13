@@ -1,0 +1,59 @@
+.main-dashboard{
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+}
+/* .left-part{
+ width: 20vw;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 20px;
+ top: 20px;
+ position: sticky;
+} */
+ .left-part {
+  width: 20vw;
+  height: 100vh; /* Full height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  position: fixed;  /* Fixed position on the screen */
+  top: 0;
+  left: 0;
+
+  background-color: #fff; /* Add background so content doesn't show through */
+  border-right: 1px solid #ddd; /* Optional border */
+}
+.right-part{
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+}
+.add-questions, .all-questions, .student-results, .student-details{
+    margin-top: 20px;
+    background-color: #f3f7ff;
+    border-left: 5px solid #4a90e2;
+    border-radius: 8px;
+    padding-left: 10px 5px;
+    height: 50px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    list-style: none;
+    text-decoration: none;
+}
+.welcome-admin{
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    margin-top: 44vh;
+}

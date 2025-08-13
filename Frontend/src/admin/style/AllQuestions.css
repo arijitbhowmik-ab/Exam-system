@@ -1,0 +1,75 @@
+/* All Questions Page */
+.question-list {
+  width: 100%;
+  padding: 30px;
+  background-color: #fefefe;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow-y: scroll;
+}
+
+.admin-subtitle {
+  font-size: 24px;
+  color: #444;
+  margin-bottom: 25px;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.question-box {
+  padding: 18px;
+  margin-bottom: 20px;
+  background-color: #f3f7ff;
+  border-left: 5px solid #4a90e2;
+  border-radius: 8px;
+}
+
+.question-box strong {
+  display: block;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding-left: 15px;
+}
+
+.option-item {
+  background-color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  font-size: 15px;
+}
+
+.question-box em { 
+  color: #2c7a2c;
+  font-weight: 500;
+  display: block;
+  margin-top: 10px;
+}
+
+.admin-actions {
+  margin-top: 12px;
+}
+
+.admin-actions button {
+  padding: 8px 14px;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.admin-actions button:hover {
+  background-color: #c0392b;
+}
