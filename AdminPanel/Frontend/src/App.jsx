@@ -26,7 +26,7 @@ function App() {
           <Route path="/register" 
            element={
             <div className="register-component">
-              <AdminRegister onRegister={() => window.location.href = "/api/admin/login"} />
+              <AdminRegister onRegister={() => window.location.href = "/login"} />
             </div>
           }
           ></Route>
