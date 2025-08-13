@@ -34,4 +34,8 @@ try {
 app.use('/api/admin', adminRoutes);
 // app.use('/api/student', studentSubmissionRoutes);
 
+app.get('/', (req,res)=>{
+    res.send("You are in the root directory")
+})
+
 app.listen(5000,'0.0.0.0', () => console.log('Server running at 5000'));
