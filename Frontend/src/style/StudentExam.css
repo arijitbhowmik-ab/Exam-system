@@ -150,3 +150,9 @@
   color: red;
   font-size: 25px;
 }
+
+.email-timer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

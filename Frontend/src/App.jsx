@@ -366,7 +366,8 @@ function App() {
             </div>
           }
           ></Route>
-          <Route path="/api/admin/login" 
+          <Route 
+          path="/api/admin/login" 
           element={
             <div className="login-component">
               <AdminLogin onLogin={(t, id) => {

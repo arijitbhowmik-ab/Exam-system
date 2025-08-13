@@ -742,9 +742,13 @@ export default function StudentExam({ token, studentId, name, email }) {
         email,
         name
       });
-      alert(`Exam submitted!\nScore: ${score} / ${total}`);
+      alert(`Exam submitted successfully!`);
       setScoreInfo({ score, total });
       setSubmitted(true);
+      localStorage.removeItem('token');
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('studentId');
     } catch (err) {
       console.error('Submission error:', err);
       alert('Submission failed: ' + err.message);
@@ -771,9 +775,9 @@ export default function StudentExam({ token, studentId, name, email }) {
     return (
       <div className="exam-container">
         <h2>Thank you! Your exam has been submitted.</h2>
-        {scoreInfo && (
+        {/* {scoreInfo && (
           <h3>Your Score: {scoreInfo.score} / {scoreInfo.total}</h3>
-        )}
+        )} */}
       </div>
     );
   }
@@ -785,7 +789,10 @@ export default function StudentExam({ token, studentId, name, email }) {
   return (
     <div className="exam-container">
       <div className="main-content">
-        <div className="timer">Time Left: {formatTime()}</div>
+        <div className='email-timer'>
+          <div className="timer">Time Left: {formatTime()}</div>
+          <div className="timer">{localStorage.getItem('name')} / {localStorage.getItem('email')}</div>
+        </div>
         {currentQuestion && (
           <div className="question-box">
             <h2>Question {current + 1}</h2>

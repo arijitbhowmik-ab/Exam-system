@@ -1,17 +1,20 @@
 import React from 'react'
 import './style/AdminDashboard.css'
 import { Link, Outlet } from 'react-router-dom'
+import axios from 'axios'
 const AdminDashboard = () => {
   const handleLogOut = async () => {
     try {
-          const response = await axios.get(`http://localhost:5000/api/admin/logout`, {
-            withCredentials: true,
-          });
+          const response = await axios.get(`http://localhost:5000/api/admin/logout`);
+          console.log(response);
           // toast.success(response.data.message);
           localStorage.removeItem("adminId");
+          localStorage.removeItem("email");
+          localStorage.removeItem("name");
+          localStorage.removeItem("token");
         } catch (error) {
           console.log("Error in logging out ", error);
-          toast.error(error.response.data.errors || "Error in logging out");
+          // toast.error(error.response.data.errors || "Error in logging out");
         }
   }
   return (
