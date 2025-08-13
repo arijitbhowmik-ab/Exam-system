@@ -1,0 +1,1 @@
+export const BACKEND_URL = "https://exam-system-snowy.vercel.app"

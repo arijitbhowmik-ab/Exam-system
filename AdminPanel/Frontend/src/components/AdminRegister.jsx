@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../style/AdminRegister.css'; // Import CSS file
 import { Link } from 'react-router-dom';
+import { BACKEND_URL } from '../utils/utils'
 
 const AdminRegister = ({onRegister}) => {
   const [name, setName] = useState('');
@@ -10,7 +11,7 @@ const AdminRegister = ({onRegister}) => {
 
   const register = async () => {
     try {
-      await axios.post('http://localhost:5000/api/admin/register', { name, email, password });
+      await axios.post(`${BACKEND_URL}/api/admin/register`, { name, email, password });
       alert('Registration successful');
       onRegister(); 
     } catch {

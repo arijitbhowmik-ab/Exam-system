@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../style/AdminStudentResults.css'; // Import CSS file
+import { BACKEND_URL } from '../utils/utils'
 
 export default function AdminStudentResults() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/results`)
+    axios.get(`${BACKEND_URL}/api/admin/results`)
       .then((res) => {
         setStudents(res.data);
       })
@@ -40,7 +41,7 @@ export default function AdminStudentResults() {
   };
 
   const deleteResponseHandler = (studentId) => {
-    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/admin/results/${studentId}`)
+    axios.delete(`${BACKEND_URL}/api/admin/results/${studentId}`)
      .then(() => {
         console.log(`Response deleted for student ID: ${studentId}`);
         setStudents(students.filter(student => student._id!== studentId));

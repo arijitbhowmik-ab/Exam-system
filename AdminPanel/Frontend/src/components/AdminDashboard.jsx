@@ -2,10 +2,11 @@ import React from 'react'
 import '../style/AdminDashboard.css'
 import { Link, Outlet } from 'react-router-dom'
 import axios from 'axios'
+import { BACKEND_URL } from '../utils/utils'
 const AdminDashboard = () => {
   const handleLogOut = async () => {
     try {
-          const response = await axios.get(`http://localhost:5000/api/admin/logout`);
+          const response = await axios.get(`${BACKEND_URL}/api/admin/logout`);
           console.log(response);
           // toast.success(response.data.message);
           localStorage.removeItem("adminId");
@@ -28,7 +29,6 @@ const AdminDashboard = () => {
           <Link to={'/login'} onClick={handleLogOut} className='student-details'>Log out</Link>
         </div>
         <div className='right-part'>
-          {/* <p className='welcome-admin'>Welcome to Admin Panel</p> */}
           <Outlet />
         </div>
     </div>

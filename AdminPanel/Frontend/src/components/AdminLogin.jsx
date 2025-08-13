@@ -2,36 +2,13 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../style/AdminLogin.css'; // Import CSS file
 import { Link } from 'react-router-dom';
+import { BACKEND_URL } from '../utils/utils'
 const AdminLogin = ({onLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   try {
-  //     const res = await axios.post('http://localhost:5000/api/admin/login', { email, password },
-  //       {
-  //           // withCredentials: true,
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           }
-  //       }
-  //     );
-  //     onLogin(res.data.token, res.data.studentId);
-  //     console.log(res.data);
-  //     localStorage.setItem('token', res.data.token);
-  //     localStorage.setItem('email', res.data.email);
-  //     localStorage.setItem('name', res.data.name);
-  //     localStorage.setItem('adminId', res.data.adminId);
-  //   } catch(err) {
-  //     console.log(err);
-  //     alert('Login failed');
-  //   }
-  // };
-
   const login = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/api/admin/login', { email, password });
+      const res = await axios.post(`${BACKEND_URL}/api/admin/login`, { email, password });
       onLogin(res.data.token, res.data.adminId);
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('email', res.data.email);

@@ -1,10 +1,10 @@
 
-// AdminQuestionManager.jsx
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import "../style/AdminQuestionManager.css";
+import { BACKEND_URL } from '../utils/utils'
 
 export default function AdminQuestionManager() {
   const [form, setForm] = useState({
@@ -37,14 +37,14 @@ export default function AdminQuestionManager() {
   const addOrUpdateQuestion = () => {
     if (editId) {
       axios
-        .put(`http://localhost:5000/api/admin/question/${editId}`, form)
+        .put(`${BACKEND_URL}/api/admin/question/${editId}`, form)
         .then(() => {
           alert("Question updated successfully");
           resetForm();
         });
     } else {
       axios
-        .post("http://localhost:5000/api/admin/add-question", form)
+        .post(`${BACKEND_URL}/api/admin/add-question`, form)
         .then(() => {
           alert("Question added successfully");
           resetForm();

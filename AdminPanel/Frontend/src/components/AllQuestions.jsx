@@ -1,11 +1,8 @@
-
-
-// AllQuestions.jsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../style/AllQuestions.css';
+import { BACKEND_URL } from '../utils/utils'
 
 export default function AllQuestions() {
   const [questions, setQuestions] = useState([]);
@@ -14,13 +11,13 @@ export default function AllQuestions() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/api/admin/questions`)
+      .get(`${BACKEND_URL}/api/admin/questions`)
       .then((res) => setQuestions(res.data));
   }, []);
 
   const deleteQuestion = (id) => {
     axios
-      .delete(`http://localhost:5000/api/admin/question/${id}`)
+      .delete(`${BACKEND_URL}/api/admin/question/${id}`)
       .then(() => setQuestions((prev) => prev.filter((q) => q._id !== id)));
   };
 
