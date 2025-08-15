@@ -17,7 +17,7 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]  // These are the headers that the server accepts and allows to be sent by the client
 }))
 app.use(cors({
-  origin: "*", // or set to "http://192.168.0.105:5173"
+  origin: "*",
   credentials: true
 }));
 const DB_URI = process.env.MONGODB_URI
