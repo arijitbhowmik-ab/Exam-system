@@ -1,9 +1,15 @@
 import mongoose from "mongoose";
 const QuestionSchema = new mongoose.Schema({
-  questionText: String,
+  questionText: {
+    type: String,
+    required: true
+  },
   options: [String],
-  correctAnswer: String,
-  marks: Number,
-  type: { type: String, enum: ['MCQ', 'Descriptive'] },
+  correctAnswer: {
+    type: String,
+    required: true
+  },
+  // marks: Number,
+  // type: { type: String, enum: ['MCQ', 'Descriptive'] },
 });
 export const Question = mongoose.model('Question', QuestionSchema);

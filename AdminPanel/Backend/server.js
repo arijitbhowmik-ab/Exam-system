@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 const app = express();
 dotenv.config();
 
+let activeStudentsCount = 0;
 
 app.use(cors());
 app.use(express.json());
@@ -34,6 +35,21 @@ try {
 app.use('/api/admin', adminRoutes);
 // app.use('/api/student', studentSubmissionRoutes);
 
+
+app.post("/api/student-status", (req, res) => {
+    const { action } = req.body;
+    if (action === "connect") {
+        activeStudentsCount++;
+    } else if (action === "disconnect" && activeStudentsCount > 0) {
+        activeStudentsCount--;
+    }
+    console.log("Active Students:", activeStudentsCount);
+    res.sendStatus(200);
+});
+
+app.get("/api/active-students", (req, res) => {
+    res.json({ count: activeStudentsCount });
+});
 app.get('/', (req,res)=>{
     res.send("You are in the root directory")
 })

@@ -7,7 +7,6 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* overflow-x: hidden; */
 }
 
 .app-container {
@@ -15,7 +14,6 @@ body{
   justify-content: center;
   align-items: center;
   border: 5px solid red;
-  /* height: 100vh; */
 }
 
 .auth-card {
@@ -49,7 +47,6 @@ body{
   margin-top: 15vh;
   width: 600px;
   background: linear-gradient(to right, #4e54c8, #8f94fb);
-  /* border: 5px solid red; */
   border-radius: 10px;
   padding: 10px;
 }
@@ -76,7 +73,6 @@ body{
  
 }
 .btn-go-to-admin{
-  /* background-color: #4e54c8; */
   color: white;
   padding: 5px 10px;
   border-radius: 5px;

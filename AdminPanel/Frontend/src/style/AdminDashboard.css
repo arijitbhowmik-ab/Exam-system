@@ -35,7 +35,8 @@
     position: absolute;
     right: 0;
 }
-.add-questions, .all-questions, .student-results, .student-details{
+.add-questions, .all-questions, .student-results, .student-details, .delete-all-question, .active-students{
+    border: 0;
     margin-top: 20px;
     background-color: #f3f7ff;
     border-left: 5px solid #4a90e2;
@@ -48,7 +49,7 @@
     display: flex;
     cursor: pointer;
     list-style: none;
-    text-decoration: none;
+    text-decoration: none; 
 }
 .welcome-admin{
     font-size: 50px;
@@ -56,4 +57,38 @@
     color: #333;
     text-align: center;
     margin-top: 44vh;
+}
+.confirm-dialog{
+    /* position: absolute; */
+    margin-top: 15px;
+    border-radius: 5px;
+    z-index: 10;
+    top: 50%;
+    background-color: aliceblue;
+    padding: 5px;
+}
+.confirm-delete{
+    border: 0;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #e74c3c;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+}
+.cancel-delete{
+    border: 0;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: rgba(28, 28, 201, 0.903) ;
+    color: white;
+    margin: 5px;
+    cursor: pointer;
+}
+.login-admin{
+    margin-top: 10px;
+    color: green;
+    position: absolute;
+    bottom: 15px;
+    font-size: large;
 }

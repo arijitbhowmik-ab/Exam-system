@@ -4,8 +4,16 @@ import cors from 'cors';
 import studentRoutes from './routes/studentRoutes.js';
 import studentSubmissionRoutes from './routes/studentSubmissionRoutes.js';
 import dotenv from 'dotenv';
+import http from "http";
+import { Server } from "socket.io";
+import axios from "axios";
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 dotenv.config();
+
+let activeStudents = new Set();
+
 
 
 app.use(cors());
@@ -34,5 +42,24 @@ try {
 app.use('/api/student', studentRoutes);
 // app.use('/api/admin', adminRoutes);
 app.use('/api/student', studentSubmissionRoutes);
+io.on("connection", (socket) => {
+    console.log("Student connected:", socket.id);
+    activeStudents.add(socket.id);
+
+    // Notify Admin backend
+    axios.post("http://192.168.0.103:5000/api/student-status", {
+        action: "connect"
+    }).catch(err => console.error("Error notifying admin:", err.message));
+
+    socket.on("disconnect", () => {
+        console.log("Student disconnected:", socket.id);
+        activeStudents.delete(socket.id);
+
+        // Notify Admin backend
+        axios.post("http://192.168.0.103:5000/api/student-status", {
+            action: "disconnect"
+        }).catch(err => console.error("Error notifying admin:", err.message));
+    });
+});
 
 app.listen(5000,'0.0.0.0', () => console.log('Server running at 5000'));

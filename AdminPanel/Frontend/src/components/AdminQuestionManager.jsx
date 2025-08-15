@@ -1,12 +1,12 @@
-
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../style/AdminQuestionManager.css";
 import { BACKEND_URL } from '../utils/utils'
+import toast from "react-hot-toast";
 
-export default function AdminQuestionManager() {
+export default function AdminQuestionManager() { 
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     questionText: "",
     options: ["", "", "", ""],
@@ -39,14 +39,17 @@ export default function AdminQuestionManager() {
       axios
         .put(`${BACKEND_URL}/api/admin/question/${editId}`, form)
         .then(() => {
-          alert("Question updated successfully");
+          // alert("Question updated successfully");
+          toast.success("Question updated successfully")
           resetForm();
+          navigate('/admin/questions')
         });
     } else {
       axios
         .post(`${BACKEND_URL}/api/admin/add-question`, form)
         .then(() => {
-          alert("Question added successfully");
+          // alert("Question added successfully");
+          toast.success("Question added successfully")
           resetForm();
         });
     }
@@ -64,12 +67,6 @@ export default function AdminQuestionManager() {
   return (
     <div className="admin-container"> 
       <h2 className="admin-title">Create Questions</h2>
-
-      {/* <div className="admin-nav">
-        <Link to="/api/admin/questions">All Questions</Link>
-        <Link to="/api/admin/results">Student Results</Link>
-      </div> */}
-
       <div className="admin-form">
         <textarea
           name="questionText"

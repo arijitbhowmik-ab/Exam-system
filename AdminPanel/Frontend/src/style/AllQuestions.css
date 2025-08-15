@@ -71,5 +71,9 @@
 }
 
 .admin-actions button:hover {
-  background-color: #c0392b;
+  opacity: 0.8;
+}
+
+.update-btn{
+  background-color: #2c7a2c !important;
 }

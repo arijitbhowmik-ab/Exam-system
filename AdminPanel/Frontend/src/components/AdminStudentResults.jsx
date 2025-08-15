@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../style/AdminStudentResults.css'; // Import CSS file
+import '../style/AdminStudentResults.css';
 import { BACKEND_URL } from '../utils/utils'
 
 export default function AdminStudentResults() {

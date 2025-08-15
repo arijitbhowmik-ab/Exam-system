@@ -7,15 +7,15 @@ const studentSubmissionSchema = new mongoose.Schema({
     required: true
   }, 
   name:{
-    type: String, // { questionId: selectedOption }
+    type: String,
     required: true
   },
   email:{
-    type: String, // { questionId: selectedOption }
+    type: String,
     required: true
   },
   responses: {
-    type: Object, // { questionId: selectedOption }
+    type: Object,
     required: true
   },
   score: {

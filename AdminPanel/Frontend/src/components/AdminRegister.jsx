@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../style/AdminRegister.css'; // Import CSS file
 import { Link } from 'react-router-dom';
 import { BACKEND_URL } from '../utils/utils'
+import toast from 'react-hot-toast';
 
 const AdminRegister = ({onRegister}) => {
   const [name, setName] = useState('');
@@ -11,11 +12,13 @@ const AdminRegister = ({onRegister}) => {
 
   const register = async () => {
     try {
-      await axios.post(`${BACKEND_URL}/api/admin/register`, { name, email, password });
-      alert('Registration successful');
+      const res = await axios.post(`${BACKEND_URL}/api/admin/register`, { name, email, password });
+      // alert('Registration successful');
+      toast.success(res.data.message);
       onRegister(); 
-    } catch {
-      alert('Registration failed');
+    } catch(error) {
+      toast.error(error.response.data.message);
+      // alert('Registration failed');
     }
   };
   return (

@@ -8,7 +8,8 @@ import AdminQuestionManager from './components/AdminQuestionManager';
 import AdminDashboard from './components/AdminDashboard';
 import AdminLogin from './components/AdminLogin';
 import AdminRegister from './components/AdminRegister';
-
+import toast, { Toaster } from 'react-hot-toast';
+import ActiveStudents from './components/ActiveStudents';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
@@ -18,7 +19,8 @@ function App() {
   const [email, setEmail] = useState(localStorage.getItem('email') || null);
 
   return (
-    <Router>
+    <div>
+      <Router>
       <Routes>
         {/* Admin layout with nested routes */}
         {/* <Route path="/admin" element={<AdminDashboard />}> */}
@@ -44,21 +46,25 @@ function App() {
             </div>
           }
           />
-            <Route path="/admin" 
+            <Route path="/admin"  
             element={
             token && adminId ? (
               <AdminDashboard token={token} adminId={studentId} name={name} email={email} />
             ) : (
               <Navigate to="/login" />
             )
-          }
+          } 
             >
             <Route path="manage-question" element={<AdminQuestionManager />} />
             <Route path="results" element={<AdminStudentResults />} />
             <Route path="questions" element={<AllQuestions />} />
+            <Route path="active-students" element={<ActiveStudents />} />
           </Route>
       </Routes>
     </Router>
+      <Toaster position="top-center" />
+    </div>
+    
   );
 }
 

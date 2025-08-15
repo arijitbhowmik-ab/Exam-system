@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../style/AdminLogin.css'; // Import CSS file
+import '../style/AdminLogin.css'; 
 import { Link } from 'react-router-dom';
 import { BACKEND_URL } from '../utils/utils'
+import toast from 'react-hot-toast';
 const AdminLogin = ({onLogin}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,8 +15,10 @@ const AdminLogin = ({onLogin}) => {
       localStorage.setItem('email', res.data.email);
       localStorage.setItem('name', res.data.name);
       localStorage.setItem('adminId', res.data.adminId);  
+      toast.success(res.data.message);
     } catch {
-      alert('Login failed');
+      // alert('Login failed');
+      toast.error('Invalid email or password');
     }
   }
   return (

@@ -42,7 +42,7 @@ export default function AllQuestions() {
           <em>Answer: {q.correctAnswer}</em>
           <div className="admin-actions">
             <button onClick={() => deleteQuestion(q._id)}>Delete</button>
-            <button onClick={() => updateQuestion(q)}>Update</button>
+            <button className='update-btn' onClick={() => updateQuestion(q)}>Update</button>
           </div>
         </div>
       ))}
