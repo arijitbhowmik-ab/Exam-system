@@ -85,15 +85,15 @@ router.get('/logout', (req,res) => {
 })
 
 router.post('/add-question', async (req, res) => {
-  const {questionText, correctAnswer} = req.body
-  const questionSchemaValidation = z.object({
-        questionText: z.string().min(1, {message: "Name must be greater three character"}),
-        correctAnswer: z.string().min(2, {message: "Name must be greater three character"}),
-    })
-    const validateQuestion = questionSchemaValidation.safeParse(req.body)
-    if(!validateQuestion.success){
-        return res.status(400).json({errors:validateQuestion.error.issues.map(err => err.message)})
-    }
+  // const {questionText, correctAnswer} = req.body
+  // const questionSchemaValidation = z.object({
+  //       questionText: z.string().min(1, {message: "Name must be greater three character"}),
+  //       correctAnswer: z.string().min(2, {message: "Name must be greater three character"}),
+  //   })
+  //   const validateQuestion = questionSchemaValidation.safeParse(req.body)
+  //   if(!validateQuestion.success){
+  //       return res.status(400).json({errors:validateQuestion.error.issues.map(err => err.message)})
+  //   }
     try{
       const question = new Question(req.body);
       await question.save();
